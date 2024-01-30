@@ -14,16 +14,7 @@ app.use(express.json());
 //  add CORS support
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.send('Welcome to my server!');
-});
-
 app.get("/api/notes", async (req, res) => {
-  res.json({ message: "success!" });
-  // res.send("Welcome to my API");
-});
-
-app.get("/notes", async (req, res) => {
   const notes = await prisma.note.findMany();
   res.json(notes);
 });
